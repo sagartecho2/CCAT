@@ -1,0 +1,23 @@
+<tr id='event_display_{{event.id}}' data-id="{{event.id}}" class="text-center print-hide" onclick="selectRow({{event.id}})">
+  <td data-name="name" class='print-hide print_checkbox'>
+      <div class="checkbox_inline">
+          <input type="checkbox" class="css-checkbox-multiselect checkbox-print" id="checkbox-print_{{event.id}}" name="checkbox-print"><label class="label_chebox_multiselect " for="checkbox-print_{{event.id}}"></label>
+      </div>
+  </td>
+  <td data-name="name">
+      <div class="checkbox_inline print-hide">
+          <input onclick="updateIsPriority({{event.id}}, event)" type="checkbox" {% if event.ispriority|trim == 'true' %} checked="checked"{% endif %} class="css-checkbox-multiselect" id="checkbox-priority-{{event.id}}" name="checkbox-print"><label class="label_chebox_multiselect " for="checkbox-priority-{{event.id}}"></label>
+      </div>
+      <div class="print-show hide">{% if event.ispriority|trim == 'true' %}High{%else%} Low{%endif%} </div>
+  </td>
+  <td data-name="mail" id="priority"> {{ event.title }}</td>
+  <td data-name="desc" id="start_date">{{ event.startdate|date('m/d/Y H:i') }}</td>
+  <td data-name="sel" id="end_date"> {{ event.enddate|date('m/d/Y H:i') }}</td>
+  <td data-name="add" id="status">{{ status[event.status] }}</td>
+  <td data-name="del" class='print-hide'><button class="btn-clear-sm b_edit_icon" data-target="#mybox" data-original-title="Edit" data-placement="bottom" data-toggle="tooltip" type="button" onclick="openEditEventPopUp({{ event.id }}, event)"></button>
+        <!--<button class="btn-clear-sm b_add_table_icon" data-target="#mybox" data-original-title="Add table" data-placement="bottom" data-toggle="tooltip" type="button"> </button>-->
+  </td>
+  <td data-name="del" class='print-hide'>
+        <button class="btn-clear-sm b_delete" data-target="#mybox" data-original-title="Delete" data-placement="bottom" data-toggle="tooltip" type="button" onclick="deleteEvent({{event.id}}, event)"> </button>
+  </td>
+</tr>

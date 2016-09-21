@@ -1,0 +1,21 @@
+AppBundle\Entity\MemberAssignment:
+    type: entity
+    table: MEMBERASSIGNMENT
+    repositoryClass: AppBundle\Repository\MemberAssignmentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        teacherID:
+            type: integer
+            column: TeacherID
+        studentID:
+            type: integer
+            column: StudentID
+        projectID:
+            type: integer
+            column: ProjectID
+    lifecycleCallbacks: {  }

@@ -1,0 +1,64 @@
+AppBundle\Entity\Event:
+    type: entity
+    table: EVENT
+    repositoryClass: AppBundle\Repository\EventRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: TITLE
+        startdate:
+            type: datetime
+            nullable: true
+            column: STARTDATE
+        enddate:
+            type: datetime
+            nullable: true
+            column: ENDDATE
+        ispriority:
+            type: boolean
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: ISPRIORITY
+        status:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: STATUS
+        teacherid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: TEACHERID
+        projectid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: PROJECTID
+        details:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+            column: DETAILS
+    lifecycleCallbacks: {  }

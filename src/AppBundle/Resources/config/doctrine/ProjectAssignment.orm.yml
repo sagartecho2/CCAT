@@ -1,0 +1,76 @@
+AppBundle\Entity\ProjectAssignment:
+    type: entity
+    table: PROJECT_ASSIGNMENT
+    repositoryClass: AppBundle\Repository\ProjectAssignmentRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        assignedby:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: ASSIGNEDBY
+        teacherid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: TEACHERID
+        projTypeid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: PROJ_TYPEID
+        projTitleid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: PROJ_TITLEID
+        logo:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: LOGO
+        logodesc:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+            column: LOGODESC
+        ischild:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: ISCHILD
+        guardian:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: GUARDIAN
+        eventtitle:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: EVENTTITLE
+    lifecycleCallbacks: {  }

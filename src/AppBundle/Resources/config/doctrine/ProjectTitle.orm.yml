@@ -1,0 +1,29 @@
+AppBundle\Entity\ProjectTitle:
+    type: entity
+    table: PROJECT_TITLE
+    repositoryClass: AppBundle\Repository\ProjectTitleRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: TITLE
+        typeid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: TYPEID
+    lifecycleCallbacks: {  }

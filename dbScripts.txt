@@ -1,0 +1,144 @@
+-- This CLP file was created using DB2LOOK Version 11.1 
+-- Timestamp: Wed 21 Sep 2016 11:18:34 AM IST
+-- Database Manager Version: DB2/LINUXX8664 Version 11.1.0 
+-- Database Codepage: 1208
+-- Database Collating Sequence is: IDENTITY
+-- Alternate collating sequence(alt_collate): null
+-- varchar2 compatibility(varchar2_compat): OFF
+
+
+------------------------------------------------
+-- DDL Statements for Schemas
+------------------------------------------------
+
+-- Running the DDL below will explicitly create a schema in the
+-- new database that corresponds to an implicitly created schema
+-- in the original database.
+
+
+
+------------------------------------------------
+-- DDL Statements for Table TEACHER
+------------------------------------------------
+ 
+
+CREATE TABLE TEACHER (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH +1  INCREMENT BY +1  MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) , FIRSTNAME VARCHAR(100 OCTETS) NOT NULL , LASTNAME VARCHAR(100 OCTETS) , EMAIL VARCHAR(100 OCTETS) , PHONE BIGINT)IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table TEACHER
+
+ALTER TABLE TEACHER ADD PRIMARY KEY(ID)
+
+insert into Teacher(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Sagar','P','sagar.pathapelli@techo2.com',8977821139)
+insert into Teacher(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Ryan','Marshal','marshal.ryan@techo2.com',8977821139)
+insert into Teacher(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Sateesh','Mandru','sateesh.mandru@techo2.com',8977821139)
+insert into Teacher(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Ramesh','KBC','ramesh.kbc@techo2.com',8977821139)
+
+------------------------------------------------
+-- DDL Statements for Table STUDENT
+------------------------------------------------
+ 
+
+CREATE TABLE STUDENT  (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY ( START WITH +1  INCREMENT BY +1  MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) , FIRSTNAME VARCHAR(100 OCTETS) NOT NULL , LASTNAME VARCHAR(100 OCTETS) , EMAIL VARCHAR(100 OCTETS) , PHONE BIGINT )   IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table STUDENT
+
+ALTER TABLE STUDENT ADD PRIMARY KEY(ID);
+
+insert into Student(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Akash','Mehra','akash.mehra@yahoo.com',9887478444)
+insert into Student(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Anand','Shah','anand.shah@yahoo.com',9887478444)
+insert into Student(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Sandy','Mohan','sandy.mohan@yahoo.com',9887478444)
+insert into Student(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Jagadish','Kesireddy','jagadish.reddy@yahoo.com',9887478444)
+insert into Student(FIRSTNAME,LASTNAME,EMAIL,PHONE) values('Anji','Reddy','anji.reddy@yahoo.com',9887478444)
+
+------------------------------------------------
+-- DDL Statements for Table PROJECT_TYPE
+------------------------------------------------
+ 
+
+CREATE TABLE PROJECT_TYPE  (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (  START WITH +1  INCREMENT BY +1  MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) , TYPENAME VARCHAR(100 OCTETS) )   IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table PROJECT_TYPE
+
+ALTER TABLE PROJECT_TYPE ADD PRIMARY KEY(ID);
+
+insert into Project_Type(TypeName) values('History') 
+insert into Project_Type(TypeName) values('Geography')
+insert into Project_Type(TypeName) values('Maths')  
+
+------------------------------------------------
+-- DDL Statements for Table PROJECT_TITLE
+------------------------------------------------
+ 
+
+CREATE TABLE PROJECT_TITLE  (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (  START WITH +1  INCREMENT BY +1  MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) , TITLE VARCHAR(100 OCTETS) , TYPEID INTEGER ) IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table PROJECT_TITLE
+
+ALTER TABLE PROJECT_TITLE ADD PRIMARY KEY(ID);
+
+insert into Project_Title(TITLE,TYPEID) values('Mohenjodaro',1)
+insert into Project_Title(TITLE,TYPEID) values('Indus Valley',1)
+insert into Project_Title(TITLE,TYPEID) values('Tropical Rain',2)
+insert into Project_Title(TITLE,TYPEID) values('Climate Change',2)
+insert into Project_Title(TITLE,TYPEID) values('Statistical Methods',3)
+insert into Project_Title(TITLE,TYPEID) values('Probabilty',3)
+
+------------------------------------------------
+-- DDL Statements for Table EVENT
+------------------------------------------------
+ 
+
+CREATE TABLE EVENT  (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (  START WITH +1  INCREMENT BY +1 MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) , TITLE VARCHAR(100 OCTETS) NOT NULL , DETAILS VARCHAR(500 OCTETS) , STARTDATE TIMESTAMP , ENDDATE TIMESTAMP , ISPRIORITY CHAR(1 OCTETS) FOR BIT DATA , STATUS VARCHAR(20 OCTETS) , TEACHERID INTEGER , PROJECTID INTEGER )   IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table EVENT
+
+ALTER TABLE EVENT ADD PRIMARY KEY(ID);
+
+
+------------------------------------------------
+-- DDL Statements for Table PROJECT_ASSIGNMENT
+------------------------------------------------
+ 
+
+CREATE TABLE PROJECT_ASSIGNMENT  (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (  START WITH +1 INCREMENT BY +1  MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) , ASSIGNEDBY VARCHAR(100 OCTETS) NOT NULL ,TEACHERID INTEGER NOT NULL , PROJ_TYPEID INTEGER NOT NULL , PROJ_TITLEID INTEGER NOT NULL , LOGO VARCHAR(250 OCTETS) , LOGODESC VARCHAR(500 OCTETS) , ISCHILD CHAR(1 OCTETS) FOR BIT DATA , GUARDIAN CHAR(1 OCTETS) FOR BIT DATA , EVENTTITLE VARCHAR(100 OCTETS) )   IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table PROJECT_ASSIGNMENT
+
+ALTER TABLE PROJECT_ASSIGNMENT ADD PRIMARY KEY(ID);
+
+
+------------------------------------------------
+-- DDL Statements for Table MEMBERASSIGNMENT
+------------------------------------------------
+ 
+
+CREATE TABLE MEMBERASSIGNMENT  (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (  START WITH +1  INCREMENT BY +1  MINVALUE -2147483648  MAXVALUE +2147483647  NO CYCLE  CACHE 20  NO ORDER ) ,  TEACHERID INTEGER NOT NULL ,  STUDENTID INTEGER NOT NULL , PROJECTID INTEGER NOT NULL )   IN USERSPACE1  ORGANIZE BY ROW; 
+
+
+-- DDL Statements for Primary Key on Table MEMBERASSIGNMENT
+
+ALTER TABLE MEMBERASSIGNMENT ADD PRIMARY KEY(ID);
+
+----------------------------------------
+-- Authorization Statements on Database 
+----------------------------------------
+
+ 
+GRANT DBADM WITHOUT DATAACCESS WITHOUT ACCESSCTRL ON DATABASE  TO USER ROOT     ;
+
+GRANT DATAACCESS ON DATABASE  TO USER ROOT     ;
+
+GRANT ACCESSCTRL ON DATABASE  TO USER ROOT     ;
+
+COMMIT WORK;
+
+CONNECT RESET;
+
+TERMINATE;
+

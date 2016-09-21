@@ -1,0 +1,23 @@
+AppBundle\Entity\ProjectType:
+    type: entity
+    table: PROJECT_TYPE
+    repositoryClass: AppBundle\Repository\ProjectTypeRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        typename:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: TYPENAME
+    lifecycleCallbacks: {  }

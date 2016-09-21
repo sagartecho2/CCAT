@@ -1,0 +1,13 @@
+
+   @media screen, print
+   {
+     body{font-family: arial; font-size: 14px}
+      .printtable{width:100%; padding:0px}
+     .printtable tr td{border-bottom:1px solid #ccc;}
+     .printtable tr td{border-bottom:1px solid #ccc;}
+     .printtable tr td.print-hide{display:none}
+     .printtable tr th{text-align: left;padding:5px;background-color: #CCC;font-size: 14px;font-family: arial; }
+     .printtable tr td{text-align: left;padding:5px;font-size: 14px;font-family: arial; }
+     .print-hide{display:none}
+     .print-show{display: block}
+   }

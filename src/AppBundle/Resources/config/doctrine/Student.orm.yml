@@ -1,0 +1,43 @@
+AppBundle\Entity\Student:
+    type: entity
+    table: STUDENT
+    repositoryClass: AppBundle\Repository\StudentRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstname:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: FIRSTNAME
+        lastname:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: LASTNAME
+        email:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: EMAIL
+        phone:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+            column: PHONE
+    lifecycleCallbacks: {  }
