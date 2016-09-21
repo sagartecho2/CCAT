@@ -283,11 +283,11 @@ function getEventCallback(eventid, data){
 				}else{
 						$(this).closest('tr').removeClass("print-hide");
 				}
-				/*if($('[id^=checkbox-print_]:checked').length>0){
-					$("img.print").show();
+				if($('[id^=checkbox-print_]:checked').length>0){
+					$("img#print").show();
 				}else{
-					$("img.print").hide();
-				}*/
+					$("img#print").hide();
+				}
 		});
 }
 function eventCallback(data){
