@@ -196,10 +196,11 @@ function openCreateEventPopUp(){
 		}
 }
 function openEditEventPopUp(eventId, e){
-		e.stopPropagation();
 		if(typeof eventId == "undefined"){
-				eventId = Number($("#tab_logic tr.row_color").attr('data-id'));
-		}
+			eventId = Number($("#tab_logic tr.row_color").attr('data-id'));
+		}else{
+                    	e.stopPropagation();
+                }
 		var event = projectForm.events[eventId];
 		var obj = {'event':event};
 		ajaxRequest('/event/update/0', obj,function(data){editEventPopUpCallback(eventId,data)},"html");
@@ -208,7 +209,7 @@ function editEventPopUpCallback(eventId,data){
 		$("#mybox").html(data);
 		$('#mybox').modal('show');
 		initializeDatePickers();
-		setDateAndTime(new Date());
+		setDateAndTime(new Date(projectForm.events[eventId].startdate));
 		initializeUpdateEventSubmit(eventId);
 		$("#event_form_Title").val($("#project_assignment_form_EventTitle").val());
 		$("#event_form_Details").removeAttr("required");
@@ -300,7 +301,7 @@ function eventCallback(data){
 		}
 }
 function setDateAndTime(startDate){
-			$('.form_date').datetimepicker('setStartDate', startDate);
+			$('.form_date').datetimepicker('setStartDate', new Date());
 			var eventEndDate = formatDate(startDate, 'd MMMM yyyy');
 			$('.form_date input').val(eventEndDate);
 			$('.form_time input').val(getTimeStr(startDate));
